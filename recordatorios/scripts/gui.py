@@ -49,7 +49,7 @@ class Window(Gtk.Window):
 
         self.coger_recordatorios()
         for i in range(0, len(self.recordatorios)):
-            self.filas.append(self.store.append(self.recordatorios[i]))
+            self.filas.append(self.store.append(self.recordatorios[i][:6]))
 
         treeview = Gtk.TreeView(self.store)
 
@@ -161,7 +161,7 @@ class Window(Gtk.Window):
         self.filas = []
         self.coger_recordatorios()
         for i in range(0, len(self.recordatorios)):
-            self.filas.append(self.store.append(self.recordatorios[i]))
+            self.filas.append(self.store.append(self.recordatorios[i][:6]))
 
     def anadir(self, button):
         self.aceptar_button.set_label("Nuevo")
@@ -225,6 +225,7 @@ class Window(Gtk.Window):
                               self.store[self.filas[pos]][5])
 
         if self.aceptar_button.get_label() == "Nuevo":
+            print(self.nombre_entry.get_text())
             manejar.anadir(self.nombre_entry.get_text(),
                            self.anio_spinbutton.get_value(),
                            self.mes_spinbutton.get_value(),

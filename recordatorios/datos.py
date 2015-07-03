@@ -5,7 +5,7 @@ t = time.localtime()
 
 class Recordatorio:
     """Crea todas las propiedades del recordatorios."""
-    def __init__(self, nombre, anio, mes, mdia, hora, minu):
+    def __init__(self, nombre, anio, mes, mdia, hora, minu, recordado=False):
         # propiedades del recordatorio
         self.nombre = nombre
         self.anio = anio
@@ -13,31 +13,34 @@ class Recordatorio:
         self.mdia = mdia
         self.hora = hora
         self.minu = minu
+        self.recordado = recordado
 
     def comprobar(self, t):
         """Devuelve True si el recordatorio esta pasando y False si no."""
-        self.recordar = 0
+        if self.recordado == False:
+            self.recordar = 0
 
-        if self.anio == t.tm_year:
-            self.recordar += 1
-        if self.mes == t.tm_mon:
-            self.recordar += 1
-        if self.mdia == t.tm_mday:
-            self.recordar += 1
-        if self.hora == t.tm_hour:
-            self.recordar += 1
-        if self.minu == t.tm_min:
-            self.recordar += 1
+            if self.anio == t.tm_year:
+                self.recordar += 1
+            if self.mes == t.tm_mon:
+                self.recordar += 1
+            if self.mdia == t.tm_mday:
+                self.recordar += 1
+            if self.hora == t.tm_hour:
+                self.recordar += 1
+            if self.minu == t.tm_min:
+                self.recordar += 1
 
-        if self.recordar == 5:
-            return True
-        else:
-            return False
+            if self.recordar == 5:
+                return True
+            else:
+                return False
 
-    def modificar(self, nombre=None, anio=None, mes=None,
-                  mdia=None, hora=None, minu=None):
+    def modificar(self, nombre, anio, mes, mdia, hora, minu, recordado=None):
         """Modifica el recordatorio (ya que todas las propiedades son
-        variablesde objeto esto es muy comodo)."""
+        variables de objeto esto es muy comodo)."""
+        if recordado is not None:
+            self.recordado = recordado
         self.nombre = nombre
         self.anio = anio
         self.mes = mes
@@ -48,7 +51,7 @@ class Recordatorio:
     def mostrar(self):
         """Devuelve una lista con todas las propiedades del recordatorio."""
         return [self.nombre, self.anio, self.mes,
-                self.mdia, self.hora, self.minu]
+                self.mdia, self.hora, self.minu, self.recordado]
 
 
 class GestorLista:

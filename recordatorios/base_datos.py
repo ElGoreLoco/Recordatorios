@@ -27,7 +27,7 @@ def guardar(recordatorios):
 
     for i in recordatoriosG:
         try:
-            cursor.execute("INSERT INTO recordatorios VALUES(?,?,?,?,?,?)", i)
+            cursor.execute("INSERT INTO recordatorios VALUES(?,?,?,?,?,?,?)", i)
             db.commit()
         except sqlite3.IntegrityError:
             print("Ya hay un recordatorio con ese nombre.")

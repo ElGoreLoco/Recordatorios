@@ -29,7 +29,7 @@ def eliminar(pos):
     guardar(recordatorios)
 
 
-def modificar(pos, nombre, anio, mes, mdia, hora, minu):
+def modificar(pos, nombre, anio, mes, mdia, hora, minu, recordado=None):
     cargar(recordatorios)
-    recordatorios.lista[pos].modificar(nombre, anio, mes, mdia, hora, minu)
+    recordatorios.lista[pos].modificar(nombre, anio, mes, mdia, hora, minu, recordado)
     guardar(recordatorios)
