@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+import sys
+import os
+
+path = os.path.dirname(
+    os.path.dirname(
+        os.path.abspath(
+            sys.argv[0]
+        )
+    )
+)
+
+path_rec = path + "/recordatorios"
+
+sys.path.append(path_rec)
+os.chdir(path)
+
+import scripts.recordar as recordar
+recordar.ejec()
